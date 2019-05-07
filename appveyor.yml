@@ -3,19 +3,19 @@ platform:
   - x64
 
 install:
-  - cmmd: echo "Downloading conan..."
-  - cmmd: set PATH=%PATH%;%PYTHON%/Scripts/
-  - cmmd: pip.exe install conan
-  - cmmd: conan user # Create the conan data directory
-  - cmmd: conan --version
+  - echo "Downloading conan..."
+  - set PATH=%PATH%;%PYTHON%/Scripts/
+  - pip.exe install conan
+  - conan user # Create the conan data directory
+  - conan --version
 
 build_script:
-  - cmmd: mkdir build
-  - cmmd: conan install . -o gtest:shared=True
-  - cmmd: cd build
-  - cmmd: cmake ../ -DBUILD_TEST=TRUE  -G "Visual Studio 14 2015 Win64"
-  - cmmd: cmake --build . --config Release
+  - mkdir build
+  - conan install . -o gtest:shared=True
+  - cd build
+  - cmake ../ -DBUILD_TEST=TRUE  -G "Visual Studio 14 2015 Win64"
+  - cmake --build . --config Release
 
 test_script:
-  - cmmd: cd bin
-  - cmmd: encryption_test.exe
+  - cd bin
+  - encryption_test.exe
