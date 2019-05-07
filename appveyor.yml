@@ -17,5 +17,5 @@ build_script:
   - cmake --build . --config Release
 
 test_script:
-  - cd bin
-  - encryption_test.exe
+  - cd build/Release
+  - conan-test.exe
